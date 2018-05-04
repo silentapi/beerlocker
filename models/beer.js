@@ -7,5 +7,6 @@ var BeerSchema = new mongoose.Schema({
   type: String,
   quantity: Number
 });
+
 // Export Mongoose model
 module.exports = mongoose.model('Beer', BeerSchema);
