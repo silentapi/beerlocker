@@ -30,7 +30,7 @@ router.get('/', function(req, res) {
 // Create route for /beers
 var beersRoute = router.route('/beers');
 
-// Create endpoint /api/beers for POSTS
+// Create endpoint on /api/beers for POST
 beersRoute.post(function(req, res) {
   // Create a new instance of the Beer model
   var beer = new Beer();
@@ -46,6 +46,17 @@ beersRoute.post(function(req, res) {
       res.send(err);
 
     res.json({ message: 'Beer added to the locker!', data: beer });
+  });
+});
+
+// Create endpoint on /api/beers for GET
+beersRoute.get(function(req, res) {
+  // Use the Beer model to find all beer
+  Beer.find(function(err, beers) {
+    if (err)
+      res.send(err);
+
+    res.json(beers);
   });
 });
 
